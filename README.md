@@ -1,4 +1,4 @@
 # projeto-APS
 
-<h3> Entregas <h3/>
+<h2> Entregas <h2/>
 <p> https://docs.google.com/document/d/1TmrRuEcRnA4EGhxW9vJIAzgOy1lYUbCWCjlGKx5gtnU/edit# </p>
