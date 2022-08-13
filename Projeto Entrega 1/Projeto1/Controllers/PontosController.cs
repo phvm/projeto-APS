@@ -17,7 +17,7 @@ namespace Projeto1.Controllers
         }
 
         [HttpGet]
-        public ActionResult TelaListarPontos()
+        public ActionResult Listar()
         {
             ICollection<PontoDeVacinacao> pontos = _fachada.GetPontos();
             return View("TelaListarPontos", pontos);

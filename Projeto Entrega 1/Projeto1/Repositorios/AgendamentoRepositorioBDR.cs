@@ -28,7 +28,12 @@ namespace Projeto1.Repositorios
 
         public Agendamento Get(int agendamentoId)
         {
-            return _dataContext.Agendamentos.FirstOrDefault(x => x.Id == agendamentoId);
+            return _dataContext.Agendamentos
+                .Include(x => x.Cidadao)
+                .Include(x => x.ProfissionalResponsavel)
+                .Include(x => x.Ponto)
+                .Include(x => x.Vacina)
+                .FirstOrDefault(x => x.Id == agendamentoId);
         }
 
         public void Save(Agendamento agendamento)

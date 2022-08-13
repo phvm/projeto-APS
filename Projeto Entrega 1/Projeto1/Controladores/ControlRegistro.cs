@@ -1,9 +1,6 @@
 ﻿using Projeto1.Cadastros;
 using Projeto1.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Projeto1.SubsistemaComunicacaoEmail;
 
 namespace Projeto1.Controladores
 {
@@ -11,11 +8,13 @@ namespace Projeto1.Controladores
     {
         private readonly CadastroConta _cadastroConta;
         private readonly CadastroAgendamento _cadastroAgendamento;
+        private readonly SubsistemaComunicacaoFachada _subsistemaComunicacaoFachada;
 
         public ControlRegistro(CadastroConta cadastroConta, CadastroAgendamento cadastroAgendamento)
         {
             _cadastroConta = cadastroConta;
             _cadastroAgendamento = cadastroAgendamento;
+            _subsistemaComunicacaoFachada = new SubsistemaComunicacaoFachada();
         }
 
         public void RegistrarVacinacao(int agendamentoId, int profissionalId)
@@ -28,7 +27,7 @@ namespace Projeto1.Controladores
 
             _cadastroAgendamento.Update(agendamento);
 
-            //TODO ENVIAR EMAIL
+            _subsistemaComunicacaoFachada.EnviarEmail(agendamento);
         }
     }
 }
