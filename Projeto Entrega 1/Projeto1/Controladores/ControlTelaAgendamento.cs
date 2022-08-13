@@ -26,7 +26,7 @@ namespace Projeto1.Controladores
             PontoDeVacinacao ponto = _cadastroPonto.Get(pontoId);
             Vacina vacina = _cadastroPonto.FindVacinaByPontoAndId(pontoId, vacinaId);
 
-            if (vacina.Estoque < 0) return false;
+            if (vacina.Estoque <= 0) return false;
 
             _cadastroAgendamento.InserirAgendamento(cidadao, ponto, vacina, horario);
             _cadastroPonto.DecrementarEstoque(ponto, vacina);
