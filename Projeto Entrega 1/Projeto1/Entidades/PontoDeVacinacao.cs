@@ -10,6 +10,6 @@ namespace Projeto1.Entidades
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Endereco { get; set; }
-        public ICollection<Vacina> Vacinas { get; set; }
+        public virtual ICollection<Vacina> Vacinas { get; set; }
     }
 }

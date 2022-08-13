@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Projeto1.Data;
+using Projeto1.Interfaces;
+using Projeto1.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,13 @@ namespace Projeto1
                 options.UseSqlite(_configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddSession();
             services.AddControllersWithViews();
+
+            services.AddScoped<Fachada>();
+            services.AddScoped<IContaRepositorio, ContaRepositorioBDR>();
+            services.AddScoped<IPontoRepositorio, PontoRepositorio>();
+            services.AddScoped<IAgendamentoRepositorio, AgendamentoRepositorioBDR>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,11 +61,12 @@ namespace Projeto1
 
             app.UseAuthorization();
 
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }

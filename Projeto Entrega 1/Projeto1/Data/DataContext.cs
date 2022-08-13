@@ -16,7 +16,6 @@ namespace Projeto1.Data
         public DbSet<Conta> Contas { get; set; }
         public DbSet<PontoDeVacinacao> Pontos { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
