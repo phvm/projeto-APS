@@ -6,7 +6,7 @@ function AppRoutes(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path={Links.Login} element={LoginScreen} />
+                <Route path={Links.Login} element={<LoginScreen />} />
             </Routes>
         </BrowserRouter>
     )

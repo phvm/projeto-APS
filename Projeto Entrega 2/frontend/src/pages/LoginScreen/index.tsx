@@ -1,6 +1,7 @@
 import React from 'react';
 import loginImg from '../../assets/loginImg.svg';
 import { Box, Typography } from '@mui/material'
+import LoginForm from '../../Components/LoginForm';
 
 const LoginScreen = () => {
     return(
@@ -11,12 +12,13 @@ const LoginScreen = () => {
                 </Typography>
                 <img src={loginImg} alt="" style={{width: '600px', height: '500px'}}/>
             </Box>
-            <Box sx={{width: '40%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Box sx={{width: '80%', height: '80%', backgroundColor: '#F2F0F0', borderRadius: '2em'}}>
+            <Box sx={{width: '40%', height: '80%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '3.5em'}}>
+                <Box sx={{width: '80%', height: '100%', backgroundColor: '#F2F0F0', borderRadius: '2em'}}>
+                    <LoginForm />
                 </Box>
             </Box>
         </Box>
     );
 ;}
 
-export default LoginScreen();
+export default LoginScreen;
