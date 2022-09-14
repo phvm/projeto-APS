@@ -1,0 +1,18 @@
+﻿@using Projeto1.Entidades 
+@model ICollection<PontoDeVacinacao>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ponto</th>
+            <th>Endereco</th>
+        </tr>
+    </thead>
+    @foreach (var ponto in Model)
+    {
+        <tr>
+            <td>@ponto.Nome</td>
+            <td>@ponto.Endereco</td>
+        </tr>
+    }
+</table>

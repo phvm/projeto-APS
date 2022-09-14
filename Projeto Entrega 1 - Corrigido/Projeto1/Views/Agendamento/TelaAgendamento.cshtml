@@ -1,0 +1,45 @@
+﻿@using Projeto1.Models
+@model AgendamentoViewModel
+
+<p>Ponto</p>
+@Html.DropDownListFor(m => m.PontoSelecionado, new SelectList(Model.Pontos, "Id", "Nome"), "Select")
+<p>Vacina </p>
+@Html.DropDownListFor(m => m.VacinaSelecionada, new SelectList(Model.Vacinas, "Id", "Nome"), "Select")
+<br />
+<br />
+@Html.LabelFor(m => m.Horario)
+@Html.TextBoxFor(m => m.Horario)
+<br />
+<button id="agendar">Agendar</button>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#PontoSelecionado').change(function () {
+            $('#VacinaSelecionada').empty()
+            $('#VacinaSelecionada').append('<option value="">Select</option>')
+            var pontoId = $('#PontoSelecionado').val()
+            if (pontoId <= 0) return;
+            $.get('/Agendamento/Filtrar', { pontoId }, function(result) {
+                var vacinas = result.vacinas;
+                for (var id in vacinas) {
+                    $('#VacinaSelecionada').append($("<option></option>").val(id).html(vacinas[id]))
+                }
+            })
+        })
+
+        $('#agendar').click(function () {
+            var pontoId = $('#PontoSelecionado').val()
+            var vacinaId = $('#VacinaSelecionada').val()
+            var horario = $('#Horario').val()
+
+            $.post('/Agendamento/Agendar', { pontoId, vacinaId, horario }, function(result) {
+                if (result.success) {
+                    alert('Vacinação agendada com sucesso')
+                } else {
+                    alert('Não foi possível vacinar, tente novamente mais tarde.')
+                }
+            })
+        })
+    })
+
+</script>

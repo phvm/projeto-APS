@@ -1,0 +1,59 @@
+﻿@using Projeto1.Models
+@model ListagemAgendamentosViewModel
+
+@using (Html.BeginForm("Listar", "Agendamento", FormMethod.Post))
+{
+    @Html.DropDownListFor(m => m.PontoId, new SelectList(Model.Pontos, "Id", "Nome"), "Select", new { })
+    <br />
+    @Html.LabelFor(m => m.Horario)
+    @Html.TextBoxFor(m => m.Horario)
+    <br />
+    <input type="submit" value="Procurar" />
+    <br />
+    <p>Agendamentos</p>
+
+    @if (Model.Agendamentos!= null && Model.Agendamentos.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>CPF do Cidadao</th>
+                    <th>Nome do Cidadao</th>
+                    <th>Vacina</th>
+                    <th>Horario Marcado</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            @foreach (var a in Model.Agendamentos)
+            {
+                <tr>
+                    <td>@a.Cidadao.CPF</td>
+                    <td>@a.Cidadao.Nome</td>
+                    <td>@a.Vacina.Nome</td>
+                    <td>@a.Horario</td>
+                    <td>@a.Status</td>
+                    <td><button class="registrar" type="button" data-id="@a.Id">Registrar Vacinação</button></td>
+                </tr>
+            }
+        </table>
+    }
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.registrar').click(function () {
+            var agendamentoId = $(this).attr("data-id")
+            $.post('/Agendamento/RegistrarVacinacao', { agendamentoId }, function (result) {
+                if (result.autorizado) {
+                    console.log('confirmou')
+                    alert('Vacinacao Registrada')
+                } else {
+                    alert('Aconteceu algum erro, provavelmente você não está logado')
+                }
+            });
+        })
+    })
+</script>
+
