@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model Projeto1.Entidades.Conta
+
+@Html.LabelFor(m => m.CPF)
+@Html.TextBoxFor(m => m.CPF)
+<br>
+@Html.LabelFor(m => m.Senha)
+@Html.PasswordFor(m => m.Senha)
+<br>
+<button id="Login">Login</button>
+
+<script>
+    $(document).ready(function () {        
+        //so pra debugar
+        var contaId = @Context.Session.GetInt32("ContaId")
+        console.log(contaId)
+
+        $("#Login").click(function () {
+            var cpf = $("#CPF").val()
+            var senha = $("#Senha").val()
+
+            $.post("/Login/Login", { cpf, senha }, function (result) {
+                if (result.success) {
+                    alert("Login feito com sucesso, pode acessar as outras páginas")
+                }
+                else {
+                    alert("Conta não encontrada")
+                }
+            })
+        })
+    })
+</script>
