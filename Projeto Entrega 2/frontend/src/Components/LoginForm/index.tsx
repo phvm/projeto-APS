@@ -1,9 +1,9 @@
-import { Box, Typography, TextField, FormControl, OutlinedInput, Input, InputLabel } from "@mui/material";
-import { LoginFormProps } from '../../types/componentsTypes/LoginFormProps'
+import { Box, Typography, FormControl, OutlinedInput, Input, InputLabel, Button } from "@mui/material";
+import { LoginFormProps } from '../../types/componentsTypes/LoginFormProps';
 
 const LoginForm = (props: LoginFormProps) => {
     return(
-        <Box sx={{width: props.width, height: props.height, padding: '8%'}}>
+        <Box sx={{boxSizing: 'border-box', width: '80%', height: '80%', backgroundColor: '#F2F0F0', borderRadius: '35px', padding: '3em', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
             <Typography variant="h3" align='left' sx={{color: '#E63462', fontSize: '2.5rem'}}>
                 Bem-vindo de volta!
             </Typography>
@@ -19,10 +19,13 @@ const LoginForm = (props: LoginFormProps) => {
                     <InputLabel>Senha</InputLabel>
                     <OutlinedInput required placeholder="Digite sua senha..." />
                 </FormControl>
+                <Button>Login</Button>
             </Box>
             <Box>
-                <Typography variant="h5" align='center'>Se ainda não é cadastrado</Typography>
-                <a href="">Clique aqui</a>
+                <Typography variant="h5" align='center'>
+                    Se ainda não é cadastrado <br/>
+                    <p style={{color: '#E63462'}}>clique aqui!</p>
+                </Typography>
             </Box>
         </Box>
     );
