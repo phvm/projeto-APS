@@ -1,5 +1,6 @@
 import { Box, Typography, FormControl, OutlinedInput, InputLabel, Button } from "@mui/material";
 import { LoginFormProps } from '../../types/componentsTypes/LoginFormProps';
+import { Links } from "../../types/enums";
 
 const LoginForm = (props: LoginFormProps) => {
     return(
@@ -26,7 +27,7 @@ const LoginForm = (props: LoginFormProps) => {
             <Box>
                 <Typography variant="h5" align='center'>
                     Se ainda não é cadastrado <br/>
-                    <a href="" style={{color: '#E63462'}}>clique aqui!</a>
+                    <a href={Links.Cadastro} style={{color: '#E63462'}}>clique aqui!</a>
                 </Typography>
             </Box>
         </Box>
