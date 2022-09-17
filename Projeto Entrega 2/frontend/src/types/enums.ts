@@ -1,5 +1,5 @@
 export enum Links {
-    Login= '/',
+    Login= '/login',
     Cadastro= '/register',
     Home= '/home'
 }

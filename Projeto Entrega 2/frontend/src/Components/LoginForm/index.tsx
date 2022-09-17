@@ -22,7 +22,7 @@ const LoginForm = (props: LoginFormProps) => {
                     <InputLabel>Senha</InputLabel>
                     <OutlinedInput required placeholder="Digite sua senha..." />
                 </FormControl>
-                <Button sx={{color: '#E63462', fontSize: '1rem', fontWeight: '600', width: '20%'}}>Login</Button>
+                <Button variant="contained" sx={{backgroundColor: '#E63462', fontSize: '1.2rem', fontWeight: '520', width: '20%'}}>Login</Button>
             </Box>
             <Box>
                 <Typography variant="h5" align='center'>
