@@ -7,7 +7,7 @@ export default function ServiceCard(props: ServiceCardProps) {
     <Box
       sx={{
         boxSizing: "border-box",
-        width: "12em",
+        width: "14em",
         height: "14em",
         display: "flex",
         flexDirection: "column",
@@ -18,7 +18,8 @@ export default function ServiceCard(props: ServiceCardProps) {
       }}
     >
       <img src={imgSrc} alt="" />
-      <h2>{title}</h2>
+      <Box sx={{width: '100%', backgroundColor: ''}}></Box>
+      <h2 style={{color: '#262626'}}>{title}</h2>
       <p>{description}</p>
     </Box>
   );
