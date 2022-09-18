@@ -6,9 +6,11 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
+import { useEffect, useState } from 'react'
 import { Links } from "../../types/enums";
 
 const RegisterForm = () => {
+  
   return (
     <Box
       sx={{

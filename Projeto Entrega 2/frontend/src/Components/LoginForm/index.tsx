@@ -6,10 +6,10 @@ import {
   InputLabel,
   Button,
 } from "@mui/material";
-import { LoginFormProps } from "../../types/componentsTypes/LoginFormProps";
+import { useEffect, useState } from 'react'
 import { Links } from "../../types/enums";
 
-const LoginForm = (props: LoginFormProps) => {
+const LoginForm = () => {
   return (
     <Box
       sx={{
