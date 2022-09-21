@@ -63,9 +63,13 @@ namespace ServicoConta.Controllers
         }
 
         [HttpGet("existeAdmin")]
-        public async Task<bool> ExisteAdmin(int id)
+        public async Task<IActionResult> ExisteAdmin(int id)
         {
-            return await cadastroConta.ExisteAdmin(id);
+            bool isAdmin = await cadastroConta.ExisteAdmin(id);
+
+            if (isAdmin) return StatusCode(200);
+
+            return StatusCode(404);
         }
     }
 }
