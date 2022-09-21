@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { ServiceCardProps } from "../../types/componentsTypes/ServiceCardProps";
 
 export default function ServiceCard(props: ServiceCardProps) {
-  const { imgSrc, title, description } = props;
+  const { imgSrc, title, description, linkTo } = props;
   return (
     <Box
       sx={{
@@ -17,10 +17,12 @@ export default function ServiceCard(props: ServiceCardProps) {
         padding: '0 2%'
       }}
     >
-      <img src={imgSrc} alt="" />
-      <Box sx={{width: '100%', backgroundColor: ''}}></Box>
-      <h2 style={{color: '#262626'}}>{title}</h2>
-      <p>{description}</p>
+      <a href={linkTo} style={{textDecoration: 'none'}}>
+        <img src={imgSrc} alt="" />
+        <Box sx={{width: '100%', backgroundColor: ''}}></Box>
+        <h2 style={{color: '#262626'}}>{title}</h2>
+        <p style={{color: '#262626'}}>{description}</p>
+      </a>
     </Box>
   );
 }
