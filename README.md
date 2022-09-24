@@ -4,3 +4,5 @@
 ## Entregas
 - [Definição da equipe e proposta da aplicação a ser projetada](https://docs.google.com/document/d/1TmrRuEcRnA4EGhxW9vJIAzgOy1lYUbCWCjlGKx5gtnU)
 - [Drive do grupo](https://drive.google.com/drive/u/1/folders/1Zo4Hf1OAkUWfo4A7p4Sb4Sz4QqeaKxxx)
+
+- [Slides - Projeto SOA](https://docs.google.com/presentation/d/1efKTNttEeqgyS9Yd7ytkv3gBuxQdQBMy6zLWWOw7L1U/edit?usp=sharing)

@@ -1,15 +1,29 @@
 import {
   Box,
+  Button,
   Typography,
   FormControl,
-  OutlinedInput,
   InputLabel,
-  Button,
+  OutlinedInput,
 } from "@mui/material";
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Links } from "../../types/enums";
 
-const LoginForm = () => {
+const RegisterForm = () => {
+  const [formValue, setFormValue] = useState({
+    nome: '',
+    cpf: '',
+    email: '',
+    senha: ''
+  });
+
+  const handleChange = (prop) => (event) => {
+    setFormValue({...formValue, [prop]: event.target.value });
+  }
+
+  const handleSubmit = () => {
+    console.log(formValue);
+  }
   return (
     <Box
       sx={{
@@ -18,7 +32,7 @@ const LoginForm = () => {
         height: "80%",
         backgroundColor: "#F2F0F0",
         borderRadius: "35px",
-        padding: "3em",
+        padding: "1% 7%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
@@ -37,14 +51,7 @@ const LoginForm = () => {
           align="left"
           sx={{ color: "#E63462", fontSize: "2.5rem" }}
         >
-          Bem-vindo de volta!
-        </Typography>
-        <Typography
-          variant="h5"
-          align="left"
-          sx={{ color: "#262626", fontSize: "1.5rem" }}
-        >
-          Por favor, informe seu CPF e senha.
+          Seja bem-vindo!
         </Typography>
       </Box>
       <Box
@@ -57,30 +64,39 @@ const LoginForm = () => {
           alignItems: "center",
         }}
       >
-        <FormControl sx={{ width: "100%" }}>
-          <InputLabel htmlFor="component-outlined">CPF</InputLabel>
+        <FormControl onChange={handleChange('nome')} sx={{ width: "100%" }}>
+          <InputLabel htmlFor="component-outlined">Nome</InputLabel>
+          <OutlinedInput required placeholder="Digite seu nome completo..." />
+        </FormControl>
+        <FormControl onChange={handleChange('cpf')} sx={{ width: "100%" }}>
+          <InputLabel>CPF</InputLabel>
           <OutlinedInput required placeholder="Digite seu CPF..." />
         </FormControl>
-        <FormControl sx={{ width: "100%" }}>
+        <FormControl onChange={handleChange('email')} sx={{ width: "100%" }}>
+          <InputLabel>E-mail</InputLabel>
+          <OutlinedInput required placeholder="Digite seu email..." />
+        </FormControl>
+        <FormControl onChange={handleChange('senha')} sx={{ width: "100%" }}>
           <InputLabel>Senha</InputLabel>
-          <OutlinedInput required placeholder="Digite sua senha..." />
+          <OutlinedInput type='password' required placeholder="Digite sua senha..." />
         </FormControl>
         <Button
+          onClick={handleSubmit}
           variant="contained"
           sx={{
             backgroundColor: "#E63462",
             fontSize: "1.2rem",
             fontWeight: "520",
-            width: "20%",
+            width: "40%",
           }}
         >
-          Login
+          Registrar
         </Button>
       </Box>
       <Box>
         <Typography variant="h5" align="center">
-          Se ainda não é cadastrado <br />
-          <a href={Links.Cadastro} style={{ color: "#E63462" }}>
+          Se você já é cadastrado <br />
+          <a href={Links.Login} style={{ color: "#E63462" }}>
             clique aqui!
           </a>
         </Typography>
@@ -89,4 +105,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
