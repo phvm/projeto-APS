@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import { useState } from 'react'
 import { Links } from "../../types/enums";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const RegisterForm = () => {
   const [formValue, setFormValue] = useState({
@@ -17,12 +19,24 @@ const RegisterForm = () => {
     senha: ''
   });
 
+  const navigate = useNavigate();
+  
+  async function registrarCidadao(nome, cpf, email, senha){
+    const response = await axios.get(`localhost:3000/conta/registrarCidadao?cpf=${cpf}&${senha}&nome=${nome}&email=${email}`);
+
+    const { status } = response;
+   
+    if (status === '200'){
+      navigate(Links.Home);
+    }
+  }
+
   const handleChange = (prop) => (event) => {
     setFormValue({...formValue, [prop]: event.target.value });
   }
 
   const handleSubmit = () => {
-    console.log(formValue);
+
   }
   return (
     <Box

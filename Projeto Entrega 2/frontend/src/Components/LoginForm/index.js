@@ -8,6 +8,8 @@ import {
   VisibilityOff
 } from "@mui/material";
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import { Links } from "../../types/enums";
 
 const LoginForm = () => {
@@ -15,13 +17,26 @@ const LoginForm = () => {
     cpf: '',
     senha: ''
   });
+
+  const navigate = useNavigate();
+
+  async function existeConta(cpf, senha){
+    const response = await axios.get(`localhost:3000/conta/login?cpf=${cpf}&${senha}`)
+    const { status } = response;
+
+    if (status === '200'){
+      navigate(Links.Home);
+    }
+  }
+
   const handleChange = (prop) => (event) => {
     setFormValues({...formValues, [prop]:event.target.value});
   }
 
-  const handleSubmit = () =>{
-    console.log(formValues);
+  const handleSubmit = () => {
+    existeConta(formValues.cpf, formValues.senha);
   }
+
   return (
     <Box
       sx={{
