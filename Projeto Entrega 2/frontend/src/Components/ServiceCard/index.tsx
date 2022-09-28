@@ -4,25 +4,27 @@ import { ServiceCardProps } from "../../types/componentsTypes/ServiceCardProps";
 export default function ServiceCard(props: ServiceCardProps) {
   const { imgSrc, title, description, linkTo } = props;
   return (
-    <Box
-      sx={{
-        boxSizing: "border-box",
-        width: "14em",
-        height: "14em",
+    <a
+      href={linkTo}
+      style={{
+        maxWidth: "14em",
+        width: "60%",
+        height: '30%',
+        borderRadius: "15px",
+        backgroundColor: "#ffffff",
+        border: "1px solid #E63462",
+        textDecoration: "none",
+        padding: "1%",
         display: "flex",
         flexDirection: "column",
-        border: '1px solid #E63462',
-        backgroundColor: '#ffffff',
-        borderRadius: '15px',
-        padding: '0 2%'
+        alignItems: "center",
       }}
     >
-      <a href={linkTo} style={{textDecoration: 'none'}}>
-        <img src={imgSrc} alt="" />
-        <Box sx={{width: '100%', backgroundColor: ''}}></Box>
-        <h2 style={{color: '#262626'}}>{title}</h2>
-        <p style={{color: '#262626'}}>{description}</p>
-      </a>
-    </Box>
+      <img style={{ width: "40%" }} src={imgSrc} alt="" />
+      <Box sx={{textAlign: "left"}}>
+        <h2 style={{ color: "#262626" }}>{title}</h2>
+        <p style={{ color: "#262626" }}>{description}</p>
+      </Box>
+    </a>
   );
 }

@@ -67,6 +67,13 @@ const RegisterForm = () => {
         >
           Seja bem-vindo!
         </Typography>
+        <Typography
+          variant="h5"
+          align="left"
+          sx={{ color: "#262626", fontSize: "1.3rem" }}
+        >
+          Para realizar o cadastro informe seu nome completo, CPF, email e defina uma senha para o sistema.
+        </Typography>
       </Box>
       <Box
         sx={{
